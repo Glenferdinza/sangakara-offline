@@ -792,11 +792,11 @@ export function QuestionBankManager({ onSaveMaterial, quotes, onZonaChange }: Qu
           {/* Question Case */}
           <div className="space-y-1.5">
             <Label htmlFor="case" className="text-[#2D3748] font-medium text-xs sm:text-sm">
-              Kasus Situasional Karakter
+              Pertanyaan / Kasus Soal (Tampil di Alat ESP32 & Layar)
             </Label>
             <Textarea
               id="case"
-              placeholder="Tuliskan skenario kasus..."
+              placeholder="Tuliskan pertanyaan kuis / soal di sini..."
               value={currentQuestion.questionCase}
               onChange={(e) =>
                 updateCurrentQuestion({ questionCase: e.target.value })
@@ -804,6 +804,9 @@ export function QuestionBankManager({ onSaveMaterial, quotes, onZonaChange }: Qu
               rows={3}
               className="border-gray-300 focus:border-[#F5A623] focus:ring-[#F5A623]/20 resize-none text-sm"
             />
+            <p className="text-[10px] text-gray-500 mt-1">
+              *Tuliskan pertanyaan pilihan ganda pendek di sini (misal: &quot;Budi terlanjur diajak mencoba ganja. Apa tindakan pertama yang harus ia lakukan?&quot;). Teks ini akan langsung muncul di layar OLED alat ESP32.
+            </p>
           </div>
 
           {/* Toggle/Pilihan Studi Kasus */}
@@ -840,7 +843,9 @@ export function QuestionBankManager({ onSaveMaterial, quotes, onZonaChange }: Qu
                   const existingCaseStudies = questions
                     .filter((q, idx) => q.category === 'kasus' && q.studiKasusId && q.studiKasusText && idx !== currentQuestionIndex)
                     .reduce((acc: Array<{ id: string; text: string; targetPion: number; type: any }>, cur) => {
-                      if (!acc.some(x => x.id === cur.studiKasusId)) {
+                      // Filter duplikasi berdasarkan ID maupun teks cerita (agar jika isi ceritanya sama persis, hanya muncul sekali di dropdown)
+                      const isDuplicate = acc.some(x => x.id === cur.studiKasusId || x.text.trim() === cur.studiKasusText?.trim());
+                      if (!isDuplicate) {
                         acc.push({
                           id: cur.studiKasusId!,
                           text: cur.studiKasusText!,
@@ -947,9 +952,9 @@ export function QuestionBankManager({ onSaveMaterial, quotes, onZonaChange }: Qu
 
                 {/* Narasi Cerita Kasus */}
                 <div className="space-y-1.5">
-                  <Label className="text-xs text-gray-600 font-medium">Narasi Studi Kasus Panjang</Label>
+                  <Label className="text-xs text-gray-600 font-medium">Narasi Studi Kasus Panjang (Cerita Latar Belakang Kelompok)</Label>
                   <Textarea
-                    placeholder="Tuliskan cerita kasus panjang untuk dibaca kelompok..."
+                    placeholder="Tuliskan cerita latar belakang kasus panjang untuk dibaca kelompok..."
                     value={currentQuestion.studiKasusText || ""}
                     onChange={(e) => {
                       const textVal = e.target.value;
@@ -964,7 +969,7 @@ export function QuestionBankManager({ onSaveMaterial, quotes, onZonaChange }: Qu
                     className="border-gray-300 focus:border-[#F5A623] focus:ring-[#F5A623]/20 resize-none text-xs"
                   />
                   <p className="text-[10px] text-gray-500 italic">
-                    *Teks cerita ini hanya akan dibaca sekali saat kelompok mendarat pertama kali di soal ini.
+                    *Teks cerita ini adalah narasi panjang (misal: cerita detail kasus Budi) yang dibaca bersama di layar utama. Teks ini hanya akan muncul sekali saat kelompok mendarat pertama kali di rentetan soal ini.
                   </p>
                 </div>
               </motion.div>
