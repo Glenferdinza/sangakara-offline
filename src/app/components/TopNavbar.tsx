@@ -113,6 +113,7 @@ export function TopNavbar({
                 src={typeof logoLIDM === "string" ? logoLIDM : logoLIDM.src}
                 alt="LIDM Logo"
                 className="h-7 sm:h-8 md:h-10 w-auto object-contain"
+                style={{ transform: 'scale(1.75)', transformOrigin: 'center', marginLeft: '24px', marginRight: '24px' }}
               />
               <img
                 src={typeof logoUNY === "string" ? logoUNY : logoUNY.src}

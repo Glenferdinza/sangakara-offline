@@ -142,14 +142,14 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
                   <img src={typeof logoKemendikti === "string" ? logoKemendikti : logoKemendikti.src} alt="Kemendikti" className="h-10 sm:h-14 w-auto object-contain flex-shrink-0" />
                   <img src={typeof logoDiktisaintek === "string" ? logoDiktisaintek : logoDiktisaintek.src} alt="Diktisaintek" className="h-10 sm:h-14 w-auto object-contain flex-shrink-0" />
                   <img src={typeof logo2045 === "string" ? logo2045 : logo2045.src} alt="Indonesia Emas 2045" className="h-10 sm:h-14 w-auto object-contain flex-shrink-0" />
-                  <img src={typeof logoLIDM === "string" ? logoLIDM : logoLIDM.src} alt="LIDM" className="h-10 sm:h-14 w-auto object-contain flex-shrink-0" />
+                  <img src={typeof logoLIDM === "string" ? logoLIDM : logoLIDM.src} alt="LIDM" className="h-10 sm:h-14 w-auto object-contain flex-shrink-0" style={{ transform: 'scale(1.75)', transformOrigin: 'center' }} />
                   <img src={typeof logoUNY === "string" ? logoUNY : logoUNY.src} alt="UNY" className="h-10 sm:h-14 w-auto object-contain flex-shrink-0" />
 
                   {/* Second set of logos for seamless loop */}
                   <img src={typeof logoKemendikti === "string" ? logoKemendikti : logoKemendikti.src} alt="Kemendikti" className="h-10 sm:h-14 w-auto object-contain flex-shrink-0" />
                   <img src={typeof logoDiktisaintek === "string" ? logoDiktisaintek : logoDiktisaintek.src} alt="Diktisaintek" className="h-10 sm:h-14 w-auto object-contain flex-shrink-0" />
                   <img src={typeof logo2045 === "string" ? logo2045 : logo2045.src} alt="Indonesia Emas 2045" className="h-10 sm:h-14 w-auto object-contain flex-shrink-0" />
-                  <img src={typeof logoLIDM === "string" ? logoLIDM : logoLIDM.src} alt="LIDM" className="h-10 sm:h-14 w-auto object-contain flex-shrink-0" />
+                  <img src={typeof logoLIDM === "string" ? logoLIDM : logoLIDM.src} alt="LIDM" className="h-10 sm:h-14 w-auto object-contain flex-shrink-0" style={{ transform: 'scale(1.75)', transformOrigin: 'center' }} />
                   <img src={typeof logoUNY === "string" ? logoUNY : logoUNY.src} alt="UNY" className="h-10 sm:h-14 w-auto object-contain flex-shrink-0" />
                 </div>
               </div>

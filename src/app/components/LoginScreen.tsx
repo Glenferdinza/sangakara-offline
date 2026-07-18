@@ -86,9 +86,13 @@ export function LoginScreen({ onLoginSuccess }: LoginScreenProps) {
               src={typeof logo.src === "string" ? logo.src : logo.src.src}
               alt={logo.alt}
               className={`w-auto object-contain transition-all duration-[1000ms] cubic-bezier(0.25, 1, 0.5, 1) ${logo.className} ${
-                loadingStep === "center"
-                  ? "h-8 md:h-12 lg:h-16 drop-shadow-[0_4px_12px_rgba(30,58,95,0.03)]"
-                  : "h-6 sm:h-7 md:h-8"
+                logo.alt === "LIDM"
+                  ? loadingStep === "center"
+                    ? "h-14 md:h-20 lg:h-28 mx-6 drop-shadow-[0_4px_12px_rgba(30,58,95,0.03)]"
+                    : "h-10 sm:h-12 md:h-14 mx-6"
+                  : loadingStep === "center"
+                    ? "h-8 md:h-12 lg:h-16 drop-shadow-[0_4px_12px_rgba(30,58,95,0.03)]"
+                    : "h-6 sm:h-7 md:h-8"
               } animate-fade-in`}
               style={{
                 animationDelay: `${idx * 120}ms`,
